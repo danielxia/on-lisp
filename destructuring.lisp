@@ -52,7 +52,7 @@ destructively modifify VAR except for its leaves."
 
 (defun build-dstruct-bindings/list (pattern var)
   (declare (type symbol var))
-  (cons `(,var (,f-check ,var (quote ,pattern)))
+  (cons `(,var (dstruct-check/list ,var (quote ,pattern)))
         (mapcar #'(lambda (bind)
                     (if (gensym? (car bind))
                         `(,(car bind) (dstruct-check/list ,@(cdr bind)))
